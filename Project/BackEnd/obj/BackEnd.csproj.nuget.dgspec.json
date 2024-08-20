@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\BackEnd\\BackEnd.csproj": {}
+    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\BackEnd\\BackEnd.csproj": {
+    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\BackEnd\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,38 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
+            "Microsoft.AspNetCore.OData": {
+              "target": "Package",
+              "version": "[8.2.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
