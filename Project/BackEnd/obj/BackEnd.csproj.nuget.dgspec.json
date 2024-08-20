@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj": {}
+    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\PRN231\\PRN231\\Project\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj": {
+    "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\PRN231\\PRN231\\Project\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\PRN231\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\PRN231\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\Project\\PRN231\\Project\\BackEnd\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Downloads\\PRN231\\Prn231_bl5\\PRN231\\PRN231\\Project\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
