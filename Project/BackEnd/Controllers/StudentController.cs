@@ -1,11 +1,11 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace PRN231_ProjectTest.Controllers
+namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,30 +18,51 @@ namespace PRN231_ProjectTest.Controllers
             _context = context;
         }
 
-
-        //Get Student's Subjects
-        [HttpGet("students/{studentId}/subjects")]
-        public async Task<IActionResult> GetStudentSubjects(int studentId)
+        [HttpGet("evaluation")]
+        public async Task<IActionResult> GetStudentsWithEvaluations(int studentId)
         {
-            var student = await _context.Students
-                .Include(s => s.Subjects)  // Include Subjects for the student
-                .FirstOrDefaultAsync(s => s.StudentId == studentId);
-
-            if (student == null)
+            var evaluations = await _context.Evaluations
+                .Where(e => e.StudentId == studentId)
+                .Include(e => e.Teacher)
+                .ToListAsync();
+            if (evaluations == null)
             {
                 return NotFound();
             }
 
-            var subjects = student.Subjects.Select(s => new
+            var evaluationDetails = evaluations.Select(e => new
             {
-                s.SubjectId,
-                s.SubjectName
+                e.EvaluationId,
+                e.Grade,
+                e.AdditionExplanation,
+                TeacherName = e.Teacher != null ? e.Teacher.TeacherName : "No teacher assigned"
             });
 
-            return Ok(subjects);
+            return Ok(evaluationDetails);
         }
 
-
+        [HttpGet("{studentId}")]
+        public async Task<IActionResult> GetStudentDetails(int studentId)
+        {
+            var student = await _context.Students.Include(s => s.StudentDetails)
+                .Where(s => s.StudentId == studentId)
+                .Select(s => new StudentDetailReqDTO
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name,
+                    Age = s.Age,
+                    IsRegularStudent = s.IsRegularStudent,
+                    Address = s.StudentDetails.FirstOrDefault().Address, // Lấy chi tiết đầu tiên
+                    AdditionalInformation = s.StudentDetails.FirstOrDefault().AdditionalInformation,
+                    Evaluation = s.Evaluations.Select(e => new EvaluationDTO
+                    {
+                        Grade = e.Grade,
+                        AdditionExplanation = e.AdditionExplanation
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+            return Ok(student);
+        }
 
         //Get Student Profile Information
         [HttpGet("students/{studentId}/profile")]
@@ -75,94 +96,51 @@ namespace PRN231_ProjectTest.Controllers
             return Ok(studentProfile);
         }
 
-
-
-
-
-        //Update Student Profile
-
         [HttpPut("students/{studentId}/profile")]
-        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromForm] StudentUpdateDto updatedStudent)
+        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromForm] StudentReq updateStudentProfileDTO)
         {
-            var student = await _context.Students
-                .Include(s => s.StudentDetails) // Include student details to update them
-                .FirstOrDefaultAsync(s => s.StudentId == studentId);
+            var student = await _context.Students.Include(s => s.StudentDetails).FirstOrDefaultAsync(s => s.StudentId == studentId);
 
             if (student == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Student not found" });
             }
 
-            // Update student properties
-            student.Name = updatedStudent.Name;
-            student.Age = updatedStudent.Age;
-            student.IsRegularStudent = updatedStudent.IsRegularStudent;
+            // Cập nhật thông tin student
+            student.Name = updateStudentProfileDTO.Name;
+            student.Age = updateStudentProfileDTO.Age;
+            student.IsRegularStudent = updateStudentProfileDTO.IsRegularStudent;
 
-            // Update student details if they exist
+            // Cập nhật thông tin chi tiết student
             var studentDetail = student.StudentDetails.FirstOrDefault();
             if (studentDetail != null)
             {
-                studentDetail.Address = updatedStudent.Address;
-                studentDetail.AdditionalInformation = updatedStudent.AdditionalInformation;
-                studentDetail.PhoneNumber = updatedStudent.PhoneNumber;
+                studentDetail.Address = updateStudentProfileDTO.Address;
+                studentDetail.AdditionalInformation = updateStudentProfileDTO.AdditionalInformation;
+                studentDetail.PhoneNumber = updateStudentProfileDTO.PhoneNumber;
             }
             else
             {
                 // If no student detail exists, create a new one (if allowed by your logic)
                 student.StudentDetails.Add(new StudentDetail
                 {
-                    Address = updatedStudent.Address,
-                    AdditionalInformation = updatedStudent.AdditionalInformation,
-                    PhoneNumber = updatedStudent.PhoneNumber,
+                    Address = updateStudentProfileDTO.Address,
+                    AdditionalInformation = updateStudentProfileDTO.AdditionalInformation,
+                    PhoneNumber = updateStudentProfileDTO.PhoneNumber,
                     StudentId = student.StudentId
                 });
             }
 
-            await _context.SaveChangesAsync();
-
-            return Ok();
-        }
-
-
-
-
-        [HttpGet("students/{studentId}/evaluations")]
-        public async Task<IActionResult> GetStudentEvaluations(int studentId)
-        {
-            var evaluations = await _context.Evaluations
-                .Where(e => e.StudentId == studentId)
-                .Include(e => e.Teacher)
-                .ToListAsync();
-
-            if (evaluations == null)
+            try
             {
-                return NotFound();
+                await _context.SaveChangesAsync(); // Lưu thay đổi vào cơ sở dữ liệu
+                return Ok(new { message = "Profile updated successfully" });
             }
-
-            var evaluationDetails = evaluations.Select(e => new
+            catch (DbUpdateException)
             {
-                e.EvaluationId,
-                e.Grade,
-                e.AdditionExplanation,
-                TeacherName = e.Teacher != null ? e.Teacher.TeacherName : "No teacher assigned"
-            });
-
-            return Ok(evaluationDetails);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Error updating profile" });
+            }
         }
-
-
-
-
-
-
-
-        private bool StudentExists(int id)
-        {
-            return _context.Students.Any(e => e.StudentId == id);
-        }
-
-
-
 
     }
 }

@@ -16,10 +16,10 @@ namespace BackEnd.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly Project_Prn231Context _context;
+        private readonly ProjectPRN231Context _context;
         private readonly IConfiguration _configuration;
 
-        public AuthController(Project_Prn231Context context, IConfiguration configuration)
+        public AuthController(ProjectPRN231Context context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -192,7 +192,7 @@ namespace BackEnd.Controllers
             };
 
             emailMessage.Body = bodyBuilder.ToMessageBody();
-            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            using (var client = new  MailKit.Net.Smtp.SmtpClient())
                 {
                     await client.ConnectAsync("smtp.gmail.com", 587, false);
                     await client.AuthenticateAsync("toanbvhe163899@fpt.edu.vn", "iiyg fzdm ltsi pxsy");
