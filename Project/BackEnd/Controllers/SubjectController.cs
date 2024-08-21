@@ -35,22 +35,26 @@ namespace BackEnd.Controllers
         [HttpGet("students/{studentId}/subjects")]
         public async Task<IActionResult> GetStudentSubjects(int studentId)
         {
-            var student = await _context.Students
-                .Include(s => s.Subjects)  // Include Subjects for the student
-                .FirstOrDefaultAsync(s => s.StudentId == studentId);
+            // Kiểm tra xem sinh viên có tồn tại hay không
+            var studentExists = await _context.Students.AnyAsync(s => s.StudentId == studentId);
 
-            if (student == null)
+            if (!studentExists)
             {
                 return NotFound();
             }
 
-            var subjects = student.Subjects.Select(s => new
-            {
-                s.SubjectId,
-                s.SubjectName
-            });
+            // Lấy danh sách môn học của sinh viên đó
+            var subjects = await _context.Subjects
+                .Where(s => s.Students.Any(st => st.StudentId == studentId)) // Tìm các môn học liên kết với sinh viên
+                .Select(s => new SubjectDTO
+                {
+                    SubjectId = s.SubjectId,
+                    SubjectName = s.SubjectName
+                })
+                .ToListAsync();
 
             return Ok(subjects);
         }
+
     }
 }
