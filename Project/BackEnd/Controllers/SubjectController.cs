@@ -30,5 +30,27 @@ namespace BackEnd.Controllers
 
             return Ok(subject);
         }
+
+        //Get Student's Subjects
+        [HttpGet("students/{studentId}/subjects")]
+        public async Task<IActionResult> GetStudentSubjects(int studentId)
+        {
+            var student = await _context.Students
+                .Include(s => s.Subjects)  // Include Subjects for the student
+                .FirstOrDefaultAsync(s => s.StudentId == studentId);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var subjects = student.Subjects.Select(s => new
+            {
+                s.SubjectId,
+                s.SubjectName
+            });
+
+            return Ok(subjects);
+        }
     }
 }

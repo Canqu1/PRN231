@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "E:\\ki 8\\new\\PRN231\\Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\controllers\\subjectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\subjectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|e:\\ki 8\\new\\prn231\\project\\frontend\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|solutionrelative:frontend\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\models\\projectprn231context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\models\\projectprn231context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\dto\\studentreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\dto\\studentreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\models\\studentdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\models\\studentdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|e:\\ki 8\\new\\prn231\\project\\frontend\\frontend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -19,24 +43,12 @@
       "RelativeMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|solutionrelative:frontend\\views\\students\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|e:\\ki 8\\new\\prn231\\project\\frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|solutionrelative:frontend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\controllers\\subjectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\controllers\\subjectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BEC3539-48B7-4F60-9F9A-38DBF1206B6D}|FrontEnd\\FrontEnd.csproj|e:\\ki 8\\new\\prn231\\project\\frontend\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -47,20 +59,12 @@
       "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\dto\\subjectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\dto\\studentreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\dto\\studentreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\dto\\studentrep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\dto\\studentrep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\dto\\evaluationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\dto\\evaluationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\models\\projectprn231context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|solutionrelative:backend\\models\\projectprn231context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{69182089-38B0-437F-B0A6-0AC6575ED043}|BackEnd\\BackEnd.csproj|e:\\ki 8\\new\\prn231\\project\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -74,63 +78,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Program.cs",
-              "RelativeDocumentMoniker": "FrontEnd\\Program.cs",
-              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Program.cs",
-              "RelativeToolTip": "FrontEnd\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T16:12:23.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrontEnd",
-              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\FrontEnd.csproj",
-              "RelativeDocumentMoniker": "FrontEnd\\FrontEnd.csproj",
-              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\FrontEnd.csproj",
-              "RelativeToolTip": "FrontEnd\\FrontEnd.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-20T16:01:06.041Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "StudentsController.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Controllers\\StudentsController.cs",
               "RelativeDocumentMoniker": "FrontEnd\\Controllers\\StudentsController.cs",
               "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Controllers\\StudentsController.cs",
               "RelativeToolTip": "FrontEnd\\Controllers\\StudentsController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAUwBAAAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-20T15:58:37.928Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "SubjectController.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Controllers\\SubjectController.cs",
               "RelativeDocumentMoniker": "BackEnd\\Controllers\\SubjectController.cs",
               "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Controllers\\SubjectController.cs",
               "RelativeToolTip": "BackEnd\\Controllers\\SubjectController.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAADwvyIAAAAAAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAqwDUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-20T15:57:23.575Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "FrontEnd\\Views\\Shared\\_Layout.cshtml",
@@ -138,12 +116,11 @@
               "RelativeToolTip": "FrontEnd\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-20T15:54:56.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:54:56.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Views\\Students\\Index.cshtml",
               "RelativeDocumentMoniker": "FrontEnd\\Views\\Students\\Index.cshtml",
@@ -151,38 +128,37 @@
               "RelativeToolTip": "FrontEnd\\Views\\Students\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-20T15:54:34.594Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:54:34.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "StudentController.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Controllers\\StudentController.cs",
               "RelativeDocumentMoniker": "BackEnd\\Controllers\\StudentController.cs",
               "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Controllers\\StudentController.cs",
               "RelativeToolTip": "BackEnd\\Controllers\\StudentController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAiwGMAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAA5wC8AAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-20T15:51:07.561Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "StudentReq.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\DTO\\StudentReq.cs",
               "RelativeDocumentMoniker": "BackEnd\\DTO\\StudentReq.cs",
               "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\DTO\\StudentReq.cs",
               "RelativeToolTip": "BackEnd\\DTO\\StudentReq.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAqwCgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-20T15:50:47.009Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "StudentRep.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\DTO\\StudentRep.cs",
               "RelativeDocumentMoniker": "BackEnd\\DTO\\StudentRep.cs",
@@ -190,12 +166,11 @@
               "RelativeToolTip": "BackEnd\\DTO\\StudentRep.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:50:46.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:50:46.238Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Program.cs",
               "RelativeDocumentMoniker": "BackEnd\\Program.cs",
@@ -203,12 +178,11 @@
               "RelativeToolTip": "BackEnd\\Program.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAqwCsAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:48:48.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:48:48.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\appsettings.json",
               "RelativeDocumentMoniker": "FrontEnd\\appsettings.json",
@@ -216,25 +190,74 @@
               "RelativeToolTip": "FrontEnd\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-20T16:08:58.38Z",
+              "WhenOpened": "2024-08-20T16:08:58.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProjectPRN231Context.cs",
+              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Models\\ProjectPRN231Context.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Models\\ProjectPRN231Context.cs",
+              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Models\\ProjectPRN231Context.cs",
+              "RelativeToolTip": "BackEnd\\Models\\ProjectPRN231Context.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAawBQAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T15:48:17.467Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "StudentDetail.cs",
+              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Models\\StudentDetail.cs",
+              "RelativeDocumentMoniker": "BackEnd\\Models\\StudentDetail.cs",
+              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Models\\StudentDetail.cs",
+              "RelativeToolTip": "BackEnd\\Models\\StudentDetail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-21T00:52:27.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "launchSettings.json",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "BackEnd\\Properties\\launchSettings.json",
               "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Properties\\launchSettings.json",
               "RelativeToolTip": "BackEnd\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-08-20T15:44:27.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
+              "Title": "FrontEnd.csproj",
+              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\FrontEnd.csproj",
+              "RelativeDocumentMoniker": "FrontEnd\\FrontEnd.csproj",
+              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\FrontEnd.csproj",
+              "RelativeToolTip": "FrontEnd\\FrontEnd.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-20T16:01:06.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Program.cs",
+              "RelativeDocumentMoniker": "FrontEnd\\Program.cs",
+              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\FrontEnd\\Program.cs",
+              "RelativeToolTip": "FrontEnd\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T16:12:23.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "SubjectDTO.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\DTO\\SubjectDTO.cs",
               "RelativeDocumentMoniker": "BackEnd\\DTO\\SubjectDTO.cs",
@@ -242,12 +265,11 @@
               "RelativeToolTip": "BackEnd\\DTO\\SubjectDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:57:46.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:57:46.255Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "EvaluationDTO.cs",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\DTO\\EvaluationDTO.cs",
               "RelativeDocumentMoniker": "BackEnd\\DTO\\EvaluationDTO.cs",
@@ -255,25 +277,11 @@
               "RelativeToolTip": "BackEnd\\DTO\\EvaluationDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:50:44.27Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:50:44.27Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ProjectPRN231Context.cs",
-              "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Models\\ProjectPRN231Context.cs",
-              "RelativeDocumentMoniker": "BackEnd\\Models\\ProjectPRN231Context.cs",
-              "ToolTip": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\Models\\ProjectPRN231Context.cs",
-              "RelativeToolTip": "BackEnd\\Models\\ProjectPRN231Context.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwBwAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:48:17.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\ki 8\\new\\PRN231\\Project\\BackEnd\\appsettings.json",
               "RelativeDocumentMoniker": "BackEnd\\appsettings.json",
@@ -281,8 +289,7 @@
               "RelativeToolTip": "BackEnd\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-20T15:46:40.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:46:40.753Z"
             }
           ]
         }

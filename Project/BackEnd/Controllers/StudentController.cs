@@ -19,31 +19,33 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet("evaluation")]
-        public async Task<IActionResult> GetStudentsWithEvaluations(int id)
+        public async Task<IActionResult> GetStudentsWithEvaluations(int studentId)
         {
-            var students = await _context.Students
-                .Include(s => s.Evaluations)
-                .Where(s => s.StudentId == id)
-                .Select(s => new StudentRep
-                {
-                    StudentId = s.StudentId,
-                    Name = s.Name,
-                    Evaluation = s.Evaluations.Select(e => new EvaluationDTO
-                    {
-                        Grade = e.Grade,
-                        AdditionalInformation = e.AdditionExplanation
-                    }).ToList()
-                })
+            var evaluations = await _context.Evaluations
+                .Where(e => e.StudentId == studentId)
+                .Include(e => e.Teacher)
                 .ToListAsync();
+            if (evaluations == null)
+            {
+                return NotFound();
+            }
 
-            return Ok(students);
+            var evaluationDetails = evaluations.Select(e => new
+            {
+                e.EvaluationId,
+                e.Grade,
+                e.AdditionExplanation,
+                TeacherName = e.Teacher != null ? e.Teacher.TeacherName : "No teacher assigned"
+            });
+
+            return Ok(evaluationDetails);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetStudentDetails(int id)
+        [HttpGet("{studentId}")]
+        public async Task<IActionResult> GetStudentDetails(int studentId)
         {
             var student = await _context.Students.Include(s => s.StudentDetails)
-                .Where(s => s.StudentId == id)
+                .Where(s => s.StudentId == studentId)
                 .Select(s => new StudentDetailReqDTO
                 {
                     StudentId = s.StudentId,
@@ -62,10 +64,42 @@ namespace BackEnd.Controllers
             return Ok(student);
         }
 
-        [HttpPut("update-profile/{id}")]
-        public async Task<IActionResult> UpdateStudentProfile(int id, [FromForm] StudentReq updateStudentProfileDTO)
+        //Get Student Profile Information
+        [HttpGet("students/{studentId}/profile")]
+        public async Task<IActionResult> GetStudentProfile(int studentId)
         {
-            var student = await _context.Students.Include(s => s.StudentDetails).FirstOrDefaultAsync(s => s.StudentId == id);
+            var student = await _context.Students
+                .Include(s => s.StudentDetails) // Include student details if needed
+                .FirstOrDefaultAsync(s => s.StudentId == studentId);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var studentProfile = new
+            {
+                student.StudentId,
+                student.Name,
+                student.Age,
+                student.IsRegularStudent,
+                student.AccountId,
+                Details = student.StudentDetails.Select(sd => new
+                {
+                    sd.StudentDetailsId,
+                    sd.Address,
+                    sd.AdditionalInformation,
+                    sd.PhoneNumber
+                }).FirstOrDefault() // Assuming one student detail entry per student
+            };
+
+            return Ok(studentProfile);
+        }
+
+        [HttpPut("students/{studentId}/profile")]
+        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromForm] StudentReq updateStudentProfileDTO)
+        {
+            var student = await _context.Students.Include(s => s.StudentDetails).FirstOrDefaultAsync(s => s.StudentId == studentId);
 
             if (student == null)
             {
@@ -78,10 +112,23 @@ namespace BackEnd.Controllers
             student.IsRegularStudent = updateStudentProfileDTO.IsRegularStudent;
 
             // Cập nhật thông tin chi tiết student
-            if (student.StudentDetails != null)
+            var studentDetail = student.StudentDetails.FirstOrDefault();
+            if (studentDetail != null)
             {
-                student.StudentDetails.FirstOrDefault().Address = updateStudentProfileDTO.Address;
-                student.StudentDetails.FirstOrDefault().AdditionalInformation = updateStudentProfileDTO.AdditionalInformation;
+                studentDetail.Address = updateStudentProfileDTO.Address;
+                studentDetail.AdditionalInformation = updateStudentProfileDTO.AdditionalInformation;
+                studentDetail.PhoneNumber = updateStudentProfileDTO.PhoneNumber;
+            }
+            else
+            {
+                // If no student detail exists, create a new one (if allowed by your logic)
+                student.StudentDetails.Add(new StudentDetail
+                {
+                    Address = updateStudentProfileDTO.Address,
+                    AdditionalInformation = updateStudentProfileDTO.AdditionalInformation,
+                    PhoneNumber = updateStudentProfileDTO.PhoneNumber,
+                    StudentId = student.StudentId
+                });
             }
 
             try

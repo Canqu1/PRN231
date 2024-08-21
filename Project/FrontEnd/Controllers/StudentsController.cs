@@ -7,11 +7,12 @@ namespace FrontEnd.Controllers
     public class StudentsController : Controller
     {
         private readonly HttpClient client;
-        public readonly string ApiBaseUrl = "http://localhost:5000/api/Student";
+        public string ApiBaseUrl = "";
         public StudentsController()
         {
             client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            ApiBaseUrl = "http://localhost:5000/api/Student";
         }
         // GET: Students
         public async Task<IActionResult> Index(int id)
