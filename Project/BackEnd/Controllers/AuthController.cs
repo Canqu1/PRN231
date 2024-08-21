@@ -8,6 +8,7 @@ using MimeKit;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
+using BackEnd.DTO;
 
 
 namespace BackEnd.Controllers
@@ -62,29 +63,29 @@ namespace BackEnd.Controllers
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:Issuer"],
+                issuer: _configuration["Jwt:Issuer"],
                 claims: claims,
-                audience: _configuration["JWT:Audience"],
+                audience: _configuration["Jwt:Audience"],
                  expires: DateTime.Now.AddDays(1),
                  signingCredentials: creds);
             return Ok(new JwtSecurityTokenHandler().WriteToken(token));
         }
 
         [HttpPost("Register")]
-        public  IActionResult Register(string email, string password ,string Name ,string address)
+        public  IActionResult Register(RegisterRequest registerRequest)
         {
-            var byteData = Encoding.UTF8.GetBytes(password);
+            var byteData = Encoding.UTF8.GetBytes(registerRequest.Password);
             var encryptData = Convert.ToBase64String(byteData);
-            var account = _context.Accounts.FirstOrDefault(x => x.Email == email);
-            if (account != null)
-            {
-                return BadRequest();
-            }
+            //var account = _context.Accounts.FirstOrDefault(x => x.Email == registerRequest.Email);
+            //if (account != null)
+            //{
+            //    return BadRequest();
+            //}
         
             Guid guidActiveCode = Guid.NewGuid();
             Account accounts = new Account()
             {
-                Email = email,
+                Email = registerRequest.Email,
                 Password = encryptData,
                 Type = "student",
                 ActiveCode = guidActiveCode.ToString().Trim(),
@@ -93,10 +94,21 @@ namespace BackEnd.Controllers
             Student student = new Student()
             {
                 AccountId = accounts.AccountId,
-                Name = Name,
+                Name = registerRequest.Name,
+                Age = registerRequest.Age,
+                IsRegularStudent = registerRequest.isRegular
+                
+            };
+            StudentDetail studentDetails = new StudentDetail()
+            {
+                Address = registerRequest.Address,
+                PhoneNumber = registerRequest.Phone,
+                StudentId = student.StudentId,
+                AdditionalInformation = registerRequest.AdditionalInformation
             };
             _context.Students.Add(student);
             _context.Accounts.Add(accounts);
+            _context.StudentDetails.Add(studentDetails);
             _context.SaveChanges();
             return Ok();
         }
