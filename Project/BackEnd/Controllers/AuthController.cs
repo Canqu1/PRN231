@@ -72,7 +72,7 @@ namespace BackEnd.Controllers
         }
 
         [HttpPost("Register")]
-        public  IActionResult Register(RegisterRequest registerRequest)
+        public   async Task<IActionResult>  Register(RegisterRequest registerRequest)
         {
             var byteData = Encoding.UTF8.GetBytes(registerRequest.Password);
             var encryptData = Convert.ToBase64String(byteData);
@@ -91,6 +91,9 @@ namespace BackEnd.Controllers
                 ActiveCode = guidActiveCode.ToString().Trim(),
                 IsActive = false
             };
+             _context.Accounts.Add(accounts);
+            await _context.SaveChangesAsync();
+
             Student student = new Student()
             {
                 AccountId = accounts.AccountId,
@@ -99,6 +102,8 @@ namespace BackEnd.Controllers
                 IsRegularStudent = registerRequest.isRegular
                 
             };
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
             StudentDetail studentDetails = new StudentDetail()
             {
                 Address = registerRequest.Address,
@@ -106,10 +111,8 @@ namespace BackEnd.Controllers
                 StudentId = student.StudentId,
                 AdditionalInformation = registerRequest.AdditionalInformation
             };
-            _context.Students.Add(student);
-            _context.Accounts.Add(accounts);
             _context.StudentDetails.Add(studentDetails);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(); 
             return Ok();
         }
 
