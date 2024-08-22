@@ -1,0 +1,21 @@
+﻿@page
+@model FrontEnd.Pages.VerifyAccountModel
+@{
+    ViewData["Title"] = "Verify Account";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Verify Your Account</h1>
+    <p>Please check your email for the activation link.</p>
+    <form method="post">
+        <div class="form-group">
+            <label for="activationCode">Activation Code</label>
+            <input type="text" id="activationCode" name="ActivationCode" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Verify</button>
+    </form>
+  @*   @if (Model.Message != null)
+    {
+        <p>@Model.Message</p>
+    } *@
+</div>

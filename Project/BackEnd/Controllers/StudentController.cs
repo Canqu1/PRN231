@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ namespace BackEnd.Controllers
 
             return Ok(evaluationDetails);
         }
-
+        [Authorize(Roles =("student"))]
         [HttpGet("{studentId}")]
         public async Task<IActionResult> GetStudentDetails(int studentId)
         {
