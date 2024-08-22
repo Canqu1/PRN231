@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FrontEnd.Pages.Admin
 {
+    [Authorize(Roles = "admin")]
     public class CreateSubjectModel : PageModel
     {
         private readonly HttpClient _httpClient;
