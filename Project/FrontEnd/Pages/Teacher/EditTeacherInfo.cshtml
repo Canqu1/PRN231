@@ -15,6 +15,10 @@
                             <input type="text" class="form-control" id="teacherName" name="Teacher.TeacherName" value="@Model.Teacher.TeacherName" />
                         </div>
                         <div class="form-group">
+                            <label for="teacherName">UserID</label>
+                            <input type="text" class="form-control" id="teacherName" name="Teacher.AccountId" value="@Model.Teacher.AccountId" />
+                        </div> 
+                        <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="Teacher.Email" value="@Model.Teacher.Email" />
                         </div>
@@ -27,7 +31,7 @@
                             <input type="text" class="form-control" id="phoneNumber" name="Teacher.PhoneNumber" value="@Model.Teacher.PhoneNumber" />
                         </div>
                         <button type="submit" class="btn btn-primary">Save changes</button>
-                        <a asp-page="/Teacher/TeacherInfo" asp-route-userId="@Model.Teacher.TeacherId" class="btn btn-secondary">Cancel</a>
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
                     </form>
                 </div>
             </div>

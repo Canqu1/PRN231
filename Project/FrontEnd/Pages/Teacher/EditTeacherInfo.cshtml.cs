@@ -61,7 +61,8 @@ namespace FrontEnd.Pages.Teacher
 
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToPage("/Teacher/TeacherInfo", new { userId = TeacherId });
+                return RedirectToPage("/Teacher/TeacherInfo", new { userId = Teacher.AccountId });
+
             }
 
             return Page();
