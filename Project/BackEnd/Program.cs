@@ -19,8 +19,7 @@ builder.Services.AddCors();
 builder.Services.AddControllers()
     .AddOData(opt => opt.Select().Filter().Expand().OrderBy().Count().SetMaxTop(100)
     .AddRouteComponents("odata", GetEdmModel(), new DefaultODataBatchHandler()));
-	builder.Services
-    .AddAuthentication(options =>
+builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -28,14 +27,16 @@ builder.Services.AddControllers()
     })
     .AddJwtBearer(options =>
     {
-        options.SaveToken = true;
         options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidAudience = builder.Configuration["Jwt:Audience"],
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],            
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
@@ -96,9 +97,10 @@ app.UseCors(options =>
     options.AllowAnyOrigin();
 }
     );
-app.UseAuthorization();
 
-app.UseAuthentication(); 
+app.UseAuthentication();
+app.UseAuthorization();
+ 
 app.MapControllers();
 
 app.Run();

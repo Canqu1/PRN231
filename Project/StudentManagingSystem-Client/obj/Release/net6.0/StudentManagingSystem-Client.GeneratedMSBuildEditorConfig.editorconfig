@@ -1,0 +1,231 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = StudentManagingSystem_Client
+build_property.RootNamespace = StudentManagingSystem_Client
+build_property.ProjectDir = E:\ki 8\new\PRN231\Project\StudentManagingSystem-Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\ki 8\new\PRN231\Project\StudentManagingSystem-Client
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/ClassroomPage/AddClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxBZGRDbGFzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/ClassroomPage/ClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxDbGFzc1Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/ClassroomPage/DeleteClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxEZWxldGVDbGFzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/ClassroomPage/ExportClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxFeHBvcnRDbGFzc1Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/ClassroomPage/ImportClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxJbXBvcnRDbGFzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/ClassroomPage/UpdateClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxVcGRhdGVDbGFzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/DepartmentPage/AddDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcQWRkRGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/DepartmentPage/DeleteDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcRGVsZXRlRGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/DepartmentPage/Department.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcRGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/DepartmentPage/ExportDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcRXhwb3J0RGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/DepartmentPage/ImportDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcSW1wb3J0RGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/DepartmentPage/UpdateDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcVXBkYXRlRGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Forbidden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yYmlkZGVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/NotificationPage/AddNotification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2F0aW9uUGFnZVxBZGROb3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/NotificationPage/DeleteNotification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2F0aW9uUGFnZVxEZWxldGVOb3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/NotificationPage/Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2F0aW9uUGFnZVxOb3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/NotificationPage/UpdateNotification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90aWZpY2F0aW9uUGFnZVxVcGRhdGVOb3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/PointPage/AddPoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXEFkZFBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/PointPage/DeletePoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXERlbGV0ZVBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/PointPage/ExportPoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXEV4cG9ydFBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/PointPage/ImportPoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXEltcG9ydFBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/PointPage/Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXFBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/PointPage/UpdatePoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXFVwZGF0ZVBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Shared/_NotificationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ob3RpZmljYXRpb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/StudentPage/AddStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcQWRkU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/StudentPage/DeleteStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcRGVsZXRlU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/StudentPage/ExportStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcRXhwb3J0U3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/StudentPage/ImportStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcSW1wb3J0U3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/StudentPage/Student.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/StudentPage/UpdateStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcVXBkYXRlU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/SubjectPage/AddSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcQWRkU3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/SubjectPage/DeleteSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcRGVsZXRlU3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/SubjectPage/ExportSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcRXhwb3J0U3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/SubjectPage/ImportSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcSW1wb3J0U3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/SubjectPage/Subject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcU3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/SubjectPage/UpdateSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcVXBkYXRlU3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/TeacherPage/AddTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcQWRkVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/TeacherPage/DeleteTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcRGVsZXRlVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/TeacherPage/ExportTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcRXhwb3J0VGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/TeacherPage/ImportTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcSW1wb3J0VGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/TeacherPage/Teacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/TeacherPage/UpdateTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcVXBkYXRlVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ki 8/new/PRN231/Project/StudentManagingSystem-Client/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-1tahiowo9v
