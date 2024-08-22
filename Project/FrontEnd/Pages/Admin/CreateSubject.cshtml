@@ -1,0 +1,24 @@
+﻿@page
+@model FrontEnd.Pages.Admin.CreateSubjectModel
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Create New Subject</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="subjectName">Subject Name</label>
+                            <input type="text" class="form-control" id="subjectName" name="SubjectName" value="@Model.SubjectName" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Subject</button>
+                        <a asp-page="/Admin/Subject" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
