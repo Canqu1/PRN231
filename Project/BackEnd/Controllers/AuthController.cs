@@ -48,19 +48,33 @@ namespace BackEnd.Controllers
             var byteData = Encoding.UTF8.GetBytes(loginRequest.Password);
             var encryptData = Convert.ToBase64String(byteData);
             Account? account = _context.Accounts.FirstOrDefault(x => x.Email == loginRequest.Email && x.Password == encryptData);
-            Student? student = _context.Students.FirstOrDefault(x => x.AccountId == account.AccountId);
+            var name = "";
+            if (account.Type.ToLower() == "teacher")
+            {
+                Teacher teacher = _context.Teachers.FirstOrDefault(x => x.AccountId == account.AccountId);
+                name = teacher.TeacherName;
+            }
+            else if (account.Type.ToLower() == "student")
+            {
+                Student? student = _context.Students.FirstOrDefault(x => x.AccountId == account.AccountId);
+            }
+            else if (account.Type.ToLower() == "admin")
+            {
+                name = "Admin";
+            }
             if (account == null)
             {
                 return Unauthorized();
             }
+          
             var claims = new Claim[]
           {
-                new Claim(JwtRegisteredClaimNames.Sub, student.Name),
+                new Claim(JwtRegisteredClaimNames.Sub, name),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, account.Email),
                 new Claim("role", account.Type.ToString() ),
                 new Claim("uid", account.AccountId.ToString()),
-                new Claim("name", student.Name),
+                new Claim("name", name),
           };
             var key = new SymmetricSecurityKey(
              System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value!));

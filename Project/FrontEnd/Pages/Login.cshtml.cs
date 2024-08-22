@@ -114,7 +114,24 @@ namespace FrontEnd.Pages
                
                 }
 
-                return RedirectToPage("/Index");
+                if(Role == "admin")
+                {
+                    return RedirectToPage("/Admin/Index");
+                }
+                else if (Role == "teacher")
+                {
+                    return RedirectToPage("Teacher/TeacherInfo/", new { userId = uid });
+                }
+                else if (Role == "student")
+                {
+                    return RedirectToPage("/Student/Index");
+                }
+                else
+                {
+                    ErrorMessage = "Invalid login attempt";         
+                    return Page();
+                }
+                //return RedirectToPage("/Index");
             }
             else
             {
