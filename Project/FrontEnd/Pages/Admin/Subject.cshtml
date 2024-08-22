@@ -70,8 +70,95 @@
         </div>
     </div>
 </div>
-
 @section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Function to get the JWT token from localStorage or cookies
+            function getToken() {
+                // Replace this with your actual method of retrieving the token
+                return localStorage.getItem('jwtToken') || '';
+            }
+
+            // Initialize the modal data when the edit button is clicked
+            $('button[data-target^="#updateModal"]').on('click', function () {
+                var button = $(this);
+                var subjectId = button.data('subject-id');
+                var subjectName = button.data('subject-name');
+
+                var modal = $(`#updateModal-${subjectId}`);
+                modal.find('input[name="subjectName"]').val(subjectName); // Set the input field value
+                modal.find('form').attr('data-subject-id', subjectId); // Set the form attribute
+            });
+
+            // Handle the form submission for updating subjects
+            $(document).on('submit', 'form[id^="updateSubjectForm-"]', function (event) {
+                event.preventDefault();
+
+                var form = $(this);
+                var subjectId = form.attr('data-subject-id');
+
+                // Serialize the form data
+                var formData = form.serializeArray();
+                var subjectName = formData.find(field => field.name === 'subjectName').value;
+
+                console.log('Subject ID:', subjectId);
+                console.log('Subject Name:', subjectName);
+
+                if (subjectId && subjectName) {
+                    $.ajax({
+                        type: 'PUT',
+                        url: `http://localhost:5138/api/Subject/${subjectId}?subjectName=${subjectName}`,
+                        headers: {
+                            'Authorization': `Bearer ${getToken()}` // Add the token here
+                        },
+                        success: function () {
+                            location.reload();
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 403) {
+                                alert('You do not have permission to update this subject.');
+                            } else {
+                                console.log('Error updating subject:', xhr);
+                            }
+                        }
+                    });
+                } else {
+                    console.log('Invalid subjectId or subjectName');
+                }
+            });
+
+            $(document).on('click', '.delete-btn', function (event) {
+                event.preventDefault();
+
+                var button = $(this);
+                var subjectId = button.data('subject-id');
+
+                if (confirm('Are you sure you want to delete this subject?')) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: `http://localhost:5138/api/Subject/${subjectId}`,
+                        headers: {
+                            'Authorization': `Bearer ${getToken()}` // Add the token here
+                        },
+                        success: function () {
+                            location.reload();
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 403) {
+                                alert('You do not have permission to delete this subject.');
+                            } else {
+                                console.log('Error deleting subject:', xhr);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+
+@* @section Scripts {
 
     <script>
         $(document).ready(function () {
@@ -137,5 +224,5 @@
         });
     </script>
 }
-
+ *@
 
