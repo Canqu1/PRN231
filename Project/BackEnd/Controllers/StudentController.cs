@@ -1,6 +1,5 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +40,54 @@ namespace BackEnd.Controllers
 
             return Ok(evaluationDetails);
         }
+        [HttpGet("students/{studentId}/subjects")]
+        public async Task<IActionResult> GetStudentSubjects(int studentId)
+        {
+            var studentData = await _context.Students
+                .Where(s => s.StudentId == studentId)
+                .Select(s => new
+                {
+                    StudentName = s.Name,
+                    Subjects = s.Subjects.Select(sub => new
+                    {
+                        SubjectName = sub.SubjectName,
+                        Evaluations = sub.Students
+                            .Where(stu => stu.StudentId == studentId)
+                            .SelectMany(stu => stu.Evaluations
+                                .Where(e => e.TeacherId != null) // Đảm bảo có giáo viên
+                                .Select(e => new
+                                {
+                                    e.Grade,
+                                    e.AdditionExplanation,
+                                    TeacherName = e.Teacher != null ? e.Teacher.TeacherName : "No teacher assigned"
+                                })
+                            ).ToList()
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+
+            if (studentData == null || !studentData.Subjects.Any())
+            {
+                return NotFound(new { message = "Student or subjects not found" });
+            }
+
+            // Tạo đầu ra theo định dạng mong muốn
+            var result = new
+            {
+                StudentName = studentData.StudentName,
+                Subjects = studentData.Subjects.SelectMany(sub => sub.Evaluations.Select(e => new
+                {
+                    SubjectName = sub.SubjectName,
+                    e.Grade,
+                    e.AdditionExplanation,
+                    e.TeacherName
+                }))
+            };
+
+            return Ok(result);
+        }
+
+
         [HttpGet("{studentId}")]
         public async Task<IActionResult> GetStudentDetails(int studentId)
         {

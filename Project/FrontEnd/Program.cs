@@ -1,4 +1,4 @@
-﻿namespace FrontEnd
+namespace FrontEnd
 {
     public class Program
     {
@@ -8,19 +8,7 @@
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddAuthentication("CookieAuthentication")
-                 .AddCookie("CookieAuthentication", options =>
-                {
-                    options.LoginPath = "/Login";
-                    //options.AccessDeniedPath = "/Forbidden";
-                    options.ExpireTimeSpan = TimeSpan.FromHours(23).Add(TimeSpan.FromMinutes(50));
-                });
-            builder. Services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(20); // Thời gian hết hạn
-                options.Cookie.HttpOnly = true; // Cookie chỉ có thể được truy cập qua HTTP
-                options.Cookie.IsEssential = true; // Cookie là cần thiết cho phiên làm việc
-            });
+            builder.Services.AddHttpClient();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -33,7 +21,6 @@
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseSession();
 
             app.MapRazorPages();
 
