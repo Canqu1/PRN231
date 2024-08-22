@@ -41,7 +41,6 @@ namespace BackEnd.Controllers
 
             return Ok(evaluationDetails);
         }
-        [Authorize(Roles =("student"))]
         [HttpGet("{studentId}")]
         public async Task<IActionResult> GetStudentDetails(int studentId)
         {

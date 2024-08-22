@@ -1,4 +1,3 @@
-
 using BackEnd;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,37 +10,51 @@ using Microsoft.OData.ModelBuilder;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-// Assuming you have a folder for services
-
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddCors();
-// Add services to the container.
+
+// CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+// Add OData configuration
 builder.Services.AddControllers()
     .AddOData(opt => opt.Select().Filter().Expand().OrderBy().Count().SetMaxTop(100)
     .AddRouteComponents("odata", GetEdmModel(), new DefaultODataBatchHandler()));
+
+// JWT Authentication configuration
 builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.SaveToken = true;
-        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],            
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
-        };
-    });
-builder.Services.ConfigureSwaggerGen(c =>
 {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
+
+// Swagger/OpenAPI configuration
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -49,12 +62,13 @@ builder.Services.ConfigureSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
+        Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
             new OpenApiSecurityScheme
-             {
+            {
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.SecurityScheme,
@@ -63,53 +77,45 @@ builder.Services.ConfigureSwaggerGen(c =>
                 Scheme = "oauth2",
                 Name = "Bearer",
                 In = ParameterLocation.Header,
-             },
-             new string[] {}
+            },
+            new string[] { }
         }
     });
 });
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-//Mapping
+// Register the database context with dependency injection
+builder.Services.AddDbContext<ProjectPRN231Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MyDatabase")));
+
+// Register AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-// Register your service
+// Add the Swagger services
+builder.Services.AddEndpointsApiExplorer();
 
-
-var configuration = builder.Configuration;
-builder.Services.AddDbContext<ProjectPRN231Context>(options =>
-    options.UseSqlServer(configuration.GetConnectionString("MyDatabase")));
-
+// Build the application
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
 }
-app.UseCors(options =>
-{
-    options.AllowAnyHeader();
-    options.AllowAnyMethod();
-    options.AllowAnyOrigin();
-}
-    );
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
- 
+
 app.MapControllers();
 
 app.Run();
 
+// Define the OData EDM model
 IEdmModel GetEdmModel()
 {
-    ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-
-    builder.EntitySet<Subject>("Subjects");
-
-
-    return builder.GetEdmModel();
+    var odataBuilder = new ODataConventionModelBuilder();
+    odataBuilder.EntitySet<Subject>("Subjects");
+    return odataBuilder.GetEdmModel();
 }
