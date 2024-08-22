@@ -30,6 +30,6 @@ namespace FrontEnd.Pages.Students
             }
 
             return NotFound();
-        } 
+        }
     }
 }

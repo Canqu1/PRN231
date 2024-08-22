@@ -1,5 +1,5 @@
 ﻿@page "{studentId:int}"
-@model FrontEnd.Pages.Students.SubjectsModel
+@model FrontEnd.Pages.Students.IndexModel
 
 @{
     var studentSubjects = Model.StudentSubjects;
@@ -12,18 +12,30 @@
     {
         <h2>@studentSubjects.StudentName</h2>
 
+        <div class="mb-3">
+            <a class="btn btn-primary" href="/Students/StudentInfor/@studentSubjects.StudentId">View Student Information</a>
+        </div>
+
         <div class="list-group">
             @foreach (var subject in studentSubjects.Subjects)
             {
-                <div class="list-group-item">
+                <div class="list-group-item mb-2">
                     <h5>@subject.SubjectName</h5>
-                    <ul>
+                    <ul class="list-unstyled">
                         @foreach (var eval in subject.Evaluations)
                         {
-                            <li>
-                                <strong>Grade:</strong> @eval.Grade<br />
-                                <strong>Explanation:</strong> @eval.AdditionExplanation<br />
-                                <strong>Teacher:</strong> @eval.TeacherName
+                            <li class="mb-2">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <strong>Grade:</strong> @eval.Grade
+                                    </div>
+                                    <div>
+                                        <strong>Teacher:</strong> @eval.TeacherName
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong>Explanation:</strong> @eval.AdditionExplanation
+                                </div>
                             </li>
                         }
                     </ul>

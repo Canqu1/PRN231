@@ -1,5 +1,4 @@
 ﻿using BackEnd.DTO;
-using BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
@@ -20,27 +19,21 @@ namespace FrontEnd.Pages.Students
         public async Task<IActionResult> OnGetAsync(int studentId)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"http://localhost:5138/api/Student/Student/{studentId}");
-
-            if (response.IsSuccessStatusCode)
+            var studentResponse = await client.GetAsync($"http://localhost:5138/api/Student/students/{studentId}/profile");
+            if (studentResponse.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
+                var studentContent = await studentResponse.Content.ReadAsStringAsync();
 
-                var studentResponse = await client.GetAsync($"http://localhost:5138/api/Student/students/{studentId}/profile");
-                if (studentResponse.IsSuccessStatusCode)
+                var options = new JsonSerializerOptions
                 {
-                    var studentContent = await studentResponse.Content.ReadAsStringAsync();
+                    PropertyNameCaseInsensitive = true // Đảm bảo không phân biệt chữ hoa, chữ thường
+                };
 
-                    var options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true // Đảm bảo không phân biệt chữ hoa, chữ thường
-                    };
+                Student = JsonSerializer.Deserialize<StudentProfileDTO>(studentContent, options);
 
-                    Student = JsonSerializer.Deserialize<StudentProfileDTO>(studentContent, options);
-
-                    return Page();
-                }
+                return Page();
             }
+
             return NotFound();
         }
     }

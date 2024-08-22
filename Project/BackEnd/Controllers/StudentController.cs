@@ -1,10 +1,7 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace BackEnd.Controllers
 {
@@ -22,7 +19,7 @@ namespace BackEnd.Controllers
         [HttpGet("Student/{userID}")]
         public ActionResult<int> GetStudentId(int userID)
         {
-            var student = _context.Students.FirstOrDefault(s => s. AccountId == userID);
+            var student = _context.Students.FirstOrDefault(s => s.StudentId == userID);
             if (student == null)
             {
                 return NotFound("Student not exist");
@@ -53,14 +50,15 @@ namespace BackEnd.Controllers
 
             return Ok(evaluationDetails);
         }
-       // [Authorize(Roles = ("student"))]
+        // [Authorize(Roles = ("student"))]
         [HttpGet("students/{studentId}/subjects")]
         public async Task<IActionResult> GetStudentSubjects(int studentId)
         {
             var studentData = await _context.Students
-                .Where(s => s.StudentId == studentId)
+                .Where(s => s.AccountId == studentId)
                 .Select(s => new
                 {
+                    id = s.StudentId,
                     StudentName = s.Name,
                     Subjects = s.Subjects.Select(sub => new
                     {
@@ -88,6 +86,7 @@ namespace BackEnd.Controllers
             // Tạo đầu ra theo định dạng mong muốn
             var result = new
             {
+                StudentID = studentData.id,
                 StudentName = studentData.StudentName,
                 Subjects = studentData.Subjects.SelectMany(sub => sub.Evaluations.Select(e => new
                 {
@@ -101,7 +100,7 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-       // [Authorize(Roles = ("student"))]
+        // [Authorize(Roles = ("student"))]
         [HttpGet("{studentId}")]
         public async Task<IActionResult> GetStudentDetails(int studentId)
         {
@@ -112,7 +111,7 @@ namespace BackEnd.Controllers
                     StudentId = s.StudentId,
                     Name = s.Name,
                     Age = s.Age,
-                    
+
                     IsRegularStudent = s.IsRegularStudent,
                     Address = s.StudentDetails.FirstOrDefault().Address, // Lấy chi tiết đầu tiên
                     AdditionalInformation = s.StudentDetails.FirstOrDefault().AdditionalInformation,
@@ -125,7 +124,7 @@ namespace BackEnd.Controllers
                 .FirstOrDefaultAsync();
             return Ok(student);
         }
-       // [Authorize(Roles = ("student"))]
+        // [Authorize(Roles = ("student"))]
         //Get Student Profile Information
         [HttpGet("students/{studentId}/profile")]
         public async Task<IActionResult> GetStudentProfile(int studentId)
