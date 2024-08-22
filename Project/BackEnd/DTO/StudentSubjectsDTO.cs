@@ -2,6 +2,7 @@
 {
     public class StudentSubjectsDTO
     {
+        public int StudentId { get; set; }
         public string StudentName { get; set; }
         public List<SubjectListDTO> Subjects { get; set; } = new List<SubjectListDTO>();
     }
