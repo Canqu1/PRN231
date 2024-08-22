@@ -75,7 +75,7 @@ namespace BackEnd.Controllers
         /// <param name="subjectReq"></param>
         /// <returns></returns>
         /// 
-        [Authorize(Roles = "admin")]
+       [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> CreateSubject([FromForm] SubjectReqDTO subjectReq)
         {
@@ -106,7 +106,7 @@ namespace BackEnd.Controllers
             }
         }
 
-        [Authorize(Roles = "admin")]
+       [Authorize(Roles = "admin")]
         [HttpDelete("{subjectId}")]
         public async Task<IActionResult> DeleteSubject(int subjectId)
         {
@@ -129,11 +129,11 @@ namespace BackEnd.Controllers
         }
         [Authorize(Roles = "admin")]
         [HttpPut("{subjectId}")]
-        public async Task<IActionResult> UpdateSubject(int subjectId, [FromForm] SubjectReqDTO subjectReq)
+        public async Task<IActionResult> UpdateSubject(int subjectId, string subjectName)
         {
-            if (subjectReq == null || string.IsNullOrEmpty(subjectReq.SubjectName))
+            if (string.IsNullOrEmpty(subjectName))
             {
-                return BadRequest(new { message = "Invalid subject data." });
+                return BadRequest(new { message = "Invalid subject name." });
             }
 
             var subject = await _context.Subjects.FindAsync(subjectId);
@@ -142,7 +142,7 @@ namespace BackEnd.Controllers
                 return NotFound(new { message = "Subject not found." });
             }
 
-            subject.SubjectName = subjectReq.SubjectName;
+            subject.SubjectName = subjectName;
 
             try
             {
@@ -155,6 +155,7 @@ namespace BackEnd.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Error updating subject", error = ex.Message });
             }
         }
+
 
 
     }

@@ -1,0 +1,24 @@
+﻿@page "{subjectId:int}"
+@model FrontEnd.Pages.Admin.EditSubjectModel
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Subject Information</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="subjectName">Subject Name</label>
+                            <input type="text" class="form-control" id="subjectName" name="Subject.SubjectName" value="@Model.Subject.SubjectName" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <a asp-page="/Subject/SubjectInfo" asp-route-subjectId="@Model.Subject.SubjectId" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
