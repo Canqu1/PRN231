@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace BackEnd.Controllers
         {
             _context = context;
         }
+      //  [Authorize (Roles =("student"))]
         [HttpGet()]
         public async Task<IActionResult> GetAllSubjects()
         {
@@ -30,7 +32,7 @@ namespace BackEnd.Controllers
 
             return Ok(subject);
         }
-
+       // [Authorize(Roles = ("student"))]
         [HttpGet("subjects/{subjectId}/students")]
         public async Task<IActionResult> GetStudentsBySubject(int subjectId)
         {

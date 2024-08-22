@@ -1,0 +1,52 @@
+﻿@page "{studentId:int}"
+@model FrontEnd.Pages.Students.StudentInforModel
+
+@{
+    var student = Model.Student;
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-light">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Student Information</h5>
+            <a asp-page="/Students/EditProfile" asp-route-studentId="@student.StudentId" class="btn btn-light btn-sm">Edit</a>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <h6 class="font-weight-bold text-secondary">Name:</h6>
+                    <p class="mb-0">@student.Name</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="font-weight-bold text-secondary">Age:</h6>
+                    <p class="mb-0">@student.Age</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="font-weight-bold text-secondary">Regular Student:</h6>
+                    <p class="mb-0">@((student.IsRegularStudent ? "Yes" : "No"))</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="font-weight-bold text-secondary">Address:</h6>
+                    <p class="mb-0">@student.Details?.Address</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="font-weight-bold text-secondary">Phone Number:</h6>
+                    <p class="mb-0">@student.Details?.PhoneNumber</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="font-weight-bold text-secondary">Additional Information:</h6>
+                    <p class="mb-0">@student.Details?.AdditionalInformation </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted text-center">
+            Last updated: @DateTime.Now.ToString("dd MMM yyyy")
+        </div>
+    </div>
+</div>

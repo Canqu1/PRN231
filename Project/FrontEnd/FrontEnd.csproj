@@ -6,4 +6,24 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Pages\Students\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BackEnd\BackEnd.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Students\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Students\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Students\Index.cshtml" />
+  </ItemGroup>
+
 </Project>
