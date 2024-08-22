@@ -1,4 +1,4 @@
-﻿namespace BackEnd.DTO
+﻿namespace FrontEnd.Models
 {
     public class EvaluationDTO
     {

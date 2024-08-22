@@ -21,13 +21,16 @@ namespace PRN231_ProjectTest.Controllers
         {
             return await _context.Teachers
                                  .Include(t => t.Evaluations)
+                                 .Include(t => t.Account)
                                  .Select(t => new TeacherDTO
                                  {
                                      TeacherId = t.TeacherId,
+                                     AccountId = t.AccountId,
                                      TeacherName = t.TeacherName,
                                      Email = t.Email,
                                      Department = t.Department,
-                                     PhoneNumber = t.PhoneNumber
+                                     PhoneNumber = t.PhoneNumber,
+                                     HireDate = t.HireDate
                                  })
                                  .ToListAsync();
         }
@@ -43,6 +46,33 @@ namespace PRN231_ProjectTest.Controllers
 
             return teacher.TeacherId;
         }
+        [HttpGet("TeacherByID/{teacherId}")]
+        public async Task<ActionResult<TeacherDTO>> GetTeacherById(int teacherId)
+        {
+            var teacher = await _context.Teachers
+                                        .Include(t => t.Evaluations)
+                                         .Include(t => t.Account)
+                                        .FirstOrDefaultAsync(t => t.TeacherId == teacherId);
+
+            if (teacher == null)
+            {
+                return NotFound("Teacher not exist");
+            }
+
+            var teacherDto = new TeacherDTO
+            {
+                TeacherId = teacher.TeacherId,
+                AccountId = teacher.AccountId,
+                TeacherName = teacher.TeacherName,
+                Email = teacher.Email,
+                Department = teacher.Department,
+                PhoneNumber = teacher.PhoneNumber,
+                HireDate = teacher.HireDate
+            };
+
+            return Ok(teacherDto);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<TeacherDTO>> PostTeacher(TeacherDTO teacherDto)
@@ -70,7 +100,8 @@ namespace PRN231_ProjectTest.Controllers
                                             {
                                                 EvaluationId = e.EvaluationId,
                                                 Grade = e.Grade,
-                                                AdditionExplanation = e.AdditionExplanation
+                                                AdditionExplanation = e.AdditionExplanation,
+                                                StudentName = e.Student.Name
                                             })
                                             .ToListAsync();
 
@@ -106,11 +137,11 @@ namespace PRN231_ProjectTest.Controllers
                                    });
         }
 
-        [HttpPut("{teacherId}/Student/{studentId}/Evaluations/{evaluationId}")]
-        public async Task<IActionResult> UpdateEvaluation(int teacherId, int studentId, int evaluationId, [FromBody] UpdateEvaluationDTO updatedEvaluationDto)
+        [HttpPut("Evaluations/{evaluationId}")]
+        public async Task<IActionResult> UpdateEvaluation(int evaluationId, [FromBody] UpdateEvaluationDTO updatedEvaluationDto)
         {
             var evaluation = await _context.Evaluations
-                                           .Where(e => e.TeacherId == teacherId && e.StudentId == studentId && e.EvaluationId == evaluationId)
+                                           .Where(e => e.EvaluationId == evaluationId)
                                            .FirstOrDefaultAsync();
 
             if (evaluation == null)
@@ -139,6 +170,67 @@ namespace PRN231_ProjectTest.Controllers
 
             return NoContent();
         }
+        [HttpPut("Teacher/{teacherId}")]
+        public async Task<IActionResult> UpdateTeacherInfo(int teacherId, [FromBody] UpdateTeacherDTO updateTeacherDto)
+        {
+            var teacher = await _context.Teachers.FirstOrDefaultAsync(t => t.TeacherId == teacherId);
+
+            if (teacher == null)
+            {
+                return NotFound("Teacher not found");
+            }
+
+            teacher.TeacherName = updateTeacherDto.TeacherName;
+            teacher.Email = updateTeacherDto.Email;
+            teacher.Department = updateTeacherDto.Department;
+            teacher.PhoneNumber = updateTeacherDto.PhoneNumber;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TeacherExists(teacherId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        [HttpGet("Teacher/Evaluations/{teacherId}")]
+        public async Task<ActionResult<IEnumerable<EvaluationDTO>>> GetEvaluationsByTeacherId(int teacherId)
+        {
+            var evaluations = await _context.Evaluations
+                                            .Where(e => e.TeacherId == teacherId)
+                                            .Select(e => new EvaluationDTO
+                                            {
+                                                EvaluationId = e.EvaluationId,
+                                                Grade = e.Grade,
+                                                AdditionExplanation = e.AdditionExplanation,
+                                                StudentName = e.Student.Name
+                                            })
+                                            .ToListAsync();
+
+            if (!evaluations.Any())
+            {
+                return NotFound("No evaluations found for this teacher");
+            }
+
+            return Ok(evaluations);
+        }
+
+
+        private bool TeacherExists(int id)
+        {
+            return _context.Teachers.Any(e => e.TeacherId == id);
+        }
+
 
         private bool EvaluationExists(int id)
         {

@@ -3478,19 +3478,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dell\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ky 9\\PRN231_final\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Downloads\\PRN231\\Project\\New folder\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "D:\\ky 9\\PRN231_final\\Project\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
-      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "D:\\ky 9\\PRN231_final\\Project\\PRN231\\Project\\BackEnd\\obj\\",
+      "projectPath": "C:\\Users\\admin\\Downloads\\PRN231\\Project\\New folder\\PRN231\\Project\\BackEnd\\BackEnd.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\Downloads\\PRN231\\Project\\New folder\\PRN231\\Project\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

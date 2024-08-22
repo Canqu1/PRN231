@@ -1,0 +1,24 @@
+﻿@page "{userId:int}"
+@model FrontEnd.Pages.Teacher.TeacherInfoModel
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Teacher Information</h4>
+                </div>
+                <div class="card-body">
+                    <h5>@Model.Teacher.TeacherName</h5>
+                    <p><strong>Email:</strong> @Model.Teacher.Email</p>
+                    <p><strong>Department:</strong> @Model.Teacher.Department</p>
+                    <p><strong>Phone Number:</strong> @Model.Teacher.PhoneNumber</p>
+                    <div class="d-flex justify-content-between">
+                        <a asp-page="/Teacher/Evaluation" asp-route-teacherId="@Model.Teacher.TeacherId" class="btn btn-primary">Đánh giá</a>
+                        <a asp-page="/Teacher/EditEvaluation" asp-route-teacherId="@Model.Teacher.TeacherId" class="btn btn-warning">Sửa đánh giá</a>
+                        <a asp-page="/Teacher/EditTeacherInfo" asp-route-teacherId="@Model.Teacher.TeacherId" class="btn btn-secondary">Sửa thông tin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

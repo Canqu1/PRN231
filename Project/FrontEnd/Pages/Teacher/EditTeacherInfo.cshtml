@@ -1,0 +1,36 @@
+﻿@page "{teacherId:int}"
+@model FrontEnd.Pages.Teacher.EditTeacherInfoModel
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Teacher Information</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="teacherName">Name</label>
+                            <input type="text" class="form-control" id="teacherName" name="Teacher.TeacherName" value="@Model.Teacher.TeacherName" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="Teacher.Email" value="@Model.Teacher.Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <input type="text" class="form-control" id="department" name="Teacher.Department" value="@Model.Teacher.Department" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" name="Teacher.PhoneNumber" value="@Model.Teacher.PhoneNumber" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <a asp-page="/Teacher/TeacherInfo" asp-route-userId="@Model.Teacher.TeacherId" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
