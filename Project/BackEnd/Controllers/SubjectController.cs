@@ -70,7 +70,6 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
         /// <summary>
-        /// ///////////////////////////////////////////////////////////////////////////////////////////
         /// </summary>
         /// <param name="subjectReq"></param>
         /// <returns></returns>
