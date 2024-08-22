@@ -57,6 +57,7 @@ namespace BackEnd.Controllers
             else if (account.Type.ToLower() == "student")
             {
                 Student? student = _context.Students.FirstOrDefault(x => x.AccountId == account.AccountId);
+                name = student.Name;
             }
             else if (account.Type.ToLower() == "admin")
             {
@@ -174,21 +175,23 @@ namespace BackEnd.Controllers
             return Ok("Account activated successfully.");
         }
         [HttpPost("FogotPassword")]
-        public IActionResult FogotPassword(string email)
+        public async Task<IActionResult> FogotPassword(string email)
         {
             var account = _context.Accounts.FirstOrDefault(x => x.Email == email);
             if (account == null)
             {
                 return BadRequest("Account not found.");
             }
-            Guid guidActiveCode = Guid.NewGuid();
-            account.ActiveCode = guidActiveCode.ToString().Trim();
-            _context.SaveChanges();
-            var emailSent = SendActivationEmailAsync(email, account.ActiveCode);
-            if (!emailSent.Result)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error sending email.");
-            }
+            var newPassword= GenerateRandomPassword(8);
+            var byteData = Encoding.UTF8.GetBytes(newPassword);
+            var encryptedPassword = Convert.ToBase64String(byteData);
+            account.Password = encryptedPassword;
+             _context.SaveChangesAsync();
+            var plainTextContent = $"Your new password is: {newPassword}";
+            var htmlContent = $@"
+        <h2>Reset your password</h2>
+        <p>Your new password is: <strong>{newPassword}</strong></p>";
+            var emailSent = await SendEmailAsync(email, "Reset your password", plainTextContent, htmlContent);
             return Ok("Activation email sent.");
         }
         [HttpPost("ChangePassword")]
@@ -226,8 +229,6 @@ namespace BackEnd.Controllers
                 emailMessage.To.Add(new MailboxAddress("", email));
                 emailMessage.Subject = "Activate your account";
 
-
-
             var bodyBuilder = new BodyBuilder
             {
                 TextBody = $"Your activation code is: {activationCode}", // Plain text version
@@ -246,6 +247,41 @@ namespace BackEnd.Controllers
                 }
                 return true; 
         }
+        private async Task<bool> SendEmailAsync(string email, string subject, string plainTextContent, string htmlContent)
+        {
+            var emailMessage = new MimeMessage();
+            emailMessage.From.Add(new MailboxAddress("Project", "toanbvhe163899@fpt.edu.vn"));
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.Subject = subject;     
 
+            var bodyBuilder = new BodyBuilder
+            {
+                TextBody = plainTextContent, // Plain text version
+                HtmlBody = htmlContent       // HTML version
+            };
+
+            emailMessage.Body = bodyBuilder.ToMessageBody();
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            {
+                await client.ConnectAsync("smtp.gmail.com", 587, false);
+                await client.AuthenticateAsync("toanbvhe163899@fpt.edu.vn", "iiyg fzdm ltsi pxsy");
+                await client.SendAsync(emailMessage);
+                await client.DisconnectAsync(true);
+            }
+
+            return true;
+        }
+        private string GenerateRandomPassword(int length )
+        {
+            const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+";
+            var random = new Random();
+            var chars = new char[length];
+            for (int i = 0; i < length; i++)
+            {
+                chars[i] = validChars[random.Next(validChars.Length)];
+            }
+            return new string(chars);
+        }
     }
 }
