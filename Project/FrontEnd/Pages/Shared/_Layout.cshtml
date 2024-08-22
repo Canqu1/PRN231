@@ -27,6 +27,27 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
+
+                    <ul class="navbar-nav">
+                        @if (ViewContext.HttpContext.Session.GetString("Name") != null)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-dark">Welcome, @ViewContext.HttpContext.Session.GetString("Name")! -  @ViewContext.HttpContext.Session.GetString("Role")</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Register">Register</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>

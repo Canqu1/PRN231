@@ -42,32 +42,37 @@ namespace BackEnd.Controllers
         }
         // POST api/<AuthController>
         [HttpPost("Login")]
-        public IActionResult Login(string email ,string password)
+        public IActionResult Login(LoginRequest loginRequest)
         {
 
-            var byteData = Encoding.UTF8.GetBytes(password);
+            var byteData = Encoding.UTF8.GetBytes(loginRequest.Password);
             var encryptData = Convert.ToBase64String(byteData);
-            Account? account = _context.Accounts.FirstOrDefault(x => x.Email == email && x.Password == encryptData);
+            Account? account = _context.Accounts.FirstOrDefault(x => x.Email == loginRequest.Email && x.Password == encryptData);
+            Student? student = _context.Students.FirstOrDefault(x => x.AccountId == account.AccountId);
             if (account == null)
             {
                 return Unauthorized();
             }
             var claims = new Claim[]
           {
-              new Claim(ClaimTypes.Email, account.Email.ToString(), ClaimValueTypes.String, _configuration["Jwt:Issuer"]),
-              new Claim(ClaimTypes.Role, account.Type.ToString(), ClaimValueTypes.String, _configuration["Jwt:Issuer"]),
+                new Claim(JwtRegisteredClaimNames.Sub, student.Name),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, account.Email),
+                new Claim("role", account.Type.ToString() ),
+                new Claim("uid", account.AccountId.ToString()),
+                new Claim("name", student.Name),
           };
             var key = new SymmetricSecurityKey(
              System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value!));
 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 claims: claims,
                 audience: _configuration["Jwt:Audience"],
-                 expires: DateTime.Now.AddDays(1),
-                 signingCredentials: creds);
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: creds);
             return Ok(new JwtSecurityTokenHandler().WriteToken(token));
         }
 
@@ -99,7 +104,7 @@ namespace BackEnd.Controllers
                 AccountId = accounts.AccountId,
                 Name = registerRequest.Name,
                 Age = registerRequest.Age,
-                IsRegularStudent = registerRequest.isRegular
+                IsRegularStudent = /*registerRequest.isRegular*/ false
                 
             };
             _context.Students.Add(student);
@@ -125,7 +130,7 @@ namespace BackEnd.Controllers
                 return BadRequest("Account not found.");
             }
 
-            var emailSent = await SendActivationEmailAsync(email, account.ActiveCode);
+            var emailSent = await SendActivationEmailAsync(email, account?.ActiveCode.Trim());
             if (!emailSent)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error sending email.");
@@ -136,7 +141,7 @@ namespace BackEnd.Controllers
         [HttpPost("VerifyAccount")]
         public IActionResult VerifyAccount(string email, string activationCode)
         {
-            var account = _context.Accounts.FirstOrDefault(x => x.Email == email && x.ActiveCode == activationCode);
+            var account = _context.Accounts.FirstOrDefault(x => x.Email == email && x.ActiveCode.Trim() == activationCode.Trim());
             if (account == null)
             {
                 return BadRequest("Invalid activation code or email.");
@@ -183,16 +188,27 @@ namespace BackEnd.Controllers
 
             var byteData = Encoding.UTF8.GetBytes(newPassword);
             var encryptData = Convert.ToBase64String(byteData);
-            account.Password = encryptData; // Implement your password hashing logic
+            account.Password = encryptData; 
             _context.SaveChanges();
 
             return Ok("Password changed successfully.");
+        }
+        [HttpGet("GetUserByUserId")]
+        public IActionResult GetUserByUserId(int userId)
+        {
+            var account = _context.Accounts.FirstOrDefault(x => x.AccountId == userId);
+            if (account == null)
+            {
+                return BadRequest("Account not found.");
+            }
+
+            return Ok(account);
         }
         private async Task<bool> SendActivationEmailAsync(string email, string activationCode)
         {
            
                 var emailMessage = new MimeMessage();
-                emailMessage.From.Add(new MailboxAddress("Project", _configuration["Smtp:From"]));
+                emailMessage.From.Add(new MailboxAddress("Project", "toanbvhe163899@fpt.edu.vn"));
                 emailMessage.To.Add(new MailboxAddress("", email));
                 emailMessage.Subject = "Activate your account";
 
@@ -214,7 +230,7 @@ namespace BackEnd.Controllers
                     await client.SendAsync(emailMessage);
                     await client.DisconnectAsync(true);
                 }
-                return true; // Email sent successfully
+                return true; 
         }
 
     }
