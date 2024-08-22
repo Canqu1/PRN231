@@ -1,4 +1,3 @@
-
 using BackEnd;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,8 +9,6 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
 using Microsoft.OpenApi.Models;
 using System.Text;
-
-// Assuming you have a folder for services
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
@@ -69,8 +66,6 @@ builder.Services.ConfigureSwaggerGen(c =>
         }
     });
 });
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 //Mapping
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
