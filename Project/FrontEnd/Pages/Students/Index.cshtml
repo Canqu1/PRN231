@@ -6,45 +6,41 @@
 }
 
 <div class="container mt-4">
-    <h1>Subjects and Evaluations</h1>
+    <h1 class="mb-4">Evaluations Information</h1>
 
     @if (studentSubjects != null)
     {
-        <h2>@studentSubjects.StudentName</h2>
-
-        <div class="mb-3">
-            <a class="btn btn-primary" href="/Students/StudentInfor/@studentSubjects.StudentId">View Student Information</a>
-        </div>
-
-        <div class="list-group">
-            @foreach (var subject in studentSubjects.Subjects)
-            {
-                <div class="list-group-item mb-2">
-                    <h5>@subject.SubjectName</h5>
-                    <ul class="list-unstyled">
-                        @foreach (var eval in subject.Evaluations)
-                        {
-                            <li class="mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <strong>Grade:</strong> @eval.Grade
-                                    </div>
-                                    <div>
-                                        <strong>Teacher:</strong> @eval.TeacherName
-                                    </div>
-                                </div>
-                                <div>
-                                    <strong>Explanation:</strong> @eval.AdditionExplanation
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            }
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="card-title">Student Name: @studentSubjects.StudentName</h2>
+            </div>
+            <div class="card-body">
+                @if (studentSubjects.Subjects.Any())
+                {
+                    @foreach (var subject in studentSubjects.Subjects)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">@subject.SubjectName</h5>
+                                <p><strong>Grade:</strong> @subject.Grade</p>
+                                <p><strong>Teacher:</strong> @subject.TeacherName</p>
+                                <p><strong>Explanation:</strong> @subject.AdditionExplanation</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-muted">No subjects found.</p>
+                }
+            </div>
         </div>
     }
     else
     {
-        <p>No subjects found.</p>
+        <p class="text-muted">No subjects found.</p>
     }
+    <div class="mb-3">
+        <a class="btn btn-primary" href="/Students/StudentInfor/@studentSubjects.StudentID">View Student Information</a>
+    </div>
 </div>

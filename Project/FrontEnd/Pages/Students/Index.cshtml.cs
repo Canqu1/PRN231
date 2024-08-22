@@ -1,7 +1,9 @@
 using BackEnd.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace FrontEnd.Pages.Students
 {
