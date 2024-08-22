@@ -31,29 +31,41 @@ namespace BackEnd.Controllers
             return Ok(subject);
         }
 
-        //Get Student's Subjects
-        [HttpGet("students/{studentId}/subjects")]
-        public async Task<IActionResult> GetStudentSubjects(int studentId)
+        [HttpGet("subjects/{subjectId}/students")]
+        public async Task<IActionResult> GetStudentsBySubject(int subjectId)
         {
-            // Kiểm tra xem sinh viên có tồn tại hay không
-            var studentExists = await _context.Students.AnyAsync(s => s.StudentId == studentId);
+            // Truy vấn lấy thông tin về môn học, danh sách sinh viên và đánh giá
+            var subjectData = await _context.Subjects
+                .Where(sub => sub.SubjectId == subjectId)
+                .Select(sub => new
+                {
+                    SubjectName = sub.SubjectName,
+                    Students = sub.Students.Select(stu => stu.Evaluations
+                        .Where(e => e.TeacherId != null) // Đảm bảo có giáo viên
+                        .Select(e => new
+                        {
+                            StudentName = stu.Name,
+                            e.Grade,
+                            e.AdditionExplanation,
+                            TeacherName = e.Teacher != null ? e.Teacher.TeacherName : "No teacher assigned"
+                        })
+                    ).SelectMany(x => x).ToList() // Kết hợp tất cả đánh giá của sinh viên
+                })
+                .FirstOrDefaultAsync();
 
-            if (!studentExists)
+            if (subjectData == null || !subjectData.Students.Any())
             {
-                return NotFound();
+                return NotFound(new { message = "Subject or students not found" });
             }
 
-            // Lấy danh sách môn học của sinh viên đó
-            var subjects = await _context.Subjects
-                .Where(s => s.Students.Any(st => st.StudentId == studentId)) // Tìm các môn học liên kết với sinh viên
-                .Select(s => new SubjectDTO
-                {
-                    SubjectId = s.SubjectId,
-                    SubjectName = s.SubjectName
-                })
-                .ToListAsync();
+            // Tạo đầu ra theo định dạng mong muốn
+            var result = new
+            {
+                SubjectName = subjectData.SubjectName,
+                Students = subjectData.Students
+            };
 
-            return Ok(subjects);
+            return Ok(result);
         }
 
     }
