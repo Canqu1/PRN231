@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,18 @@ namespace BackEnd.Controllers
             _context = context;
         }
 
+        [HttpGet("Student/{userID}")]
+        public ActionResult<int> GetStudentId(int userID)
+        {
+            var student = _context.Students.FirstOrDefault(s => s. AccountId == userID);
+            if (student == null)
+            {
+                return NotFound("Student not exist");
+            }
+
+            return student.StudentId;
+        }
+        // [Authorize(Roles = ("student"))]
         [HttpGet("evaluation")]
         public async Task<IActionResult> GetStudentsWithEvaluations(int studentId)
         {
@@ -40,6 +53,7 @@ namespace BackEnd.Controllers
 
             return Ok(evaluationDetails);
         }
+       // [Authorize(Roles = ("student"))]
         [HttpGet("students/{studentId}/subjects")]
         public async Task<IActionResult> GetStudentSubjects(int studentId)
         {
@@ -87,7 +101,7 @@ namespace BackEnd.Controllers
             return Ok(result);
         }
 
-
+       // [Authorize(Roles = ("student"))]
         [HttpGet("{studentId}")]
         public async Task<IActionResult> GetStudentDetails(int studentId)
         {
@@ -98,6 +112,7 @@ namespace BackEnd.Controllers
                     StudentId = s.StudentId,
                     Name = s.Name,
                     Age = s.Age,
+                    
                     IsRegularStudent = s.IsRegularStudent,
                     Address = s.StudentDetails.FirstOrDefault().Address, // Lấy chi tiết đầu tiên
                     AdditionalInformation = s.StudentDetails.FirstOrDefault().AdditionalInformation,
@@ -110,13 +125,13 @@ namespace BackEnd.Controllers
                 .FirstOrDefaultAsync();
             return Ok(student);
         }
-
+       // [Authorize(Roles = ("student"))]
         //Get Student Profile Information
         [HttpGet("students/{studentId}/profile")]
         public async Task<IActionResult> GetStudentProfile(int studentId)
         {
             var student = await _context.Students
-                .Include(s => s.StudentDetails) // Include student details if needed
+                .Include(s => s.StudentDetails) // Bao gồm chi tiết sinh viên nếu cần
                 .FirstOrDefaultAsync(s => s.StudentId == studentId);
 
             if (student == null)
@@ -142,9 +157,9 @@ namespace BackEnd.Controllers
 
             return Ok(studentProfile);
         }
-
+        //[Authorize(Roles = ("student"))]
         [HttpPut("students/{studentId}/profile")]
-        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromForm] StudentReq updateStudentProfileDTO)
+        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromBody] StudentReq updateStudentProfileDTO)
         {
             var student = await _context.Students.Include(s => s.StudentDetails).FirstOrDefaultAsync(s => s.StudentId == studentId);
 
@@ -156,9 +171,8 @@ namespace BackEnd.Controllers
             // Cập nhật thông tin student
             student.Name = updateStudentProfileDTO.Name;
             student.Age = updateStudentProfileDTO.Age;
-            student.IsRegularStudent = updateStudentProfileDTO.IsRegularStudent;
 
-            // Cập nhật thông tin chi tiết student
+            // Cập nhật hoặc tạo mới thông tin chi tiết student
             var studentDetail = student.StudentDetails.FirstOrDefault();
             if (studentDetail != null)
             {
@@ -168,7 +182,7 @@ namespace BackEnd.Controllers
             }
             else
             {
-                // If no student detail exists, create a new one (if allowed by your logic)
+                // Nếu không tồn tại StudentDetail thì tạo mới
                 student.StudentDetails.Add(new StudentDetail
                 {
                     Address = updateStudentProfileDTO.Address,

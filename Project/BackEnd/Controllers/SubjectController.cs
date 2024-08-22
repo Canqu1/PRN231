@@ -18,6 +18,7 @@ namespace BackEnd.Controllers
         {
             _context = context;
         }
+      //  [Authorize (Roles =("student"))]
         [HttpGet()]
         public async Task<IActionResult> GetAllSubjects()
         {
@@ -32,7 +33,7 @@ namespace BackEnd.Controllers
 
             return Ok(subject);
         }
-
+       // [Authorize(Roles = ("student"))]
         [HttpGet("subjects/{subjectId}/students")]
         public async Task<IActionResult> GetStudentsBySubject(int subjectId)
         {

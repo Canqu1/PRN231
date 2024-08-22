@@ -1,0 +1,38 @@
+﻿@page "{studentId:int}"
+@model FrontEnd.Pages.Students.SubjectsModel
+
+@{
+    var studentSubjects = Model.StudentSubjects;
+}
+
+<div class="container mt-4">
+    <h1>Subjects and Evaluations</h1>
+
+    @if (studentSubjects != null)
+    {
+        <h2>@studentSubjects.StudentName</h2>
+
+        <div class="list-group">
+            @foreach (var subject in studentSubjects.Subjects)
+            {
+                <div class="list-group-item">
+                    <h5>@subject.SubjectName</h5>
+                    <ul>
+                        @foreach (var eval in subject.Evaluations)
+                        {
+                            <li>
+                                <strong>Grade:</strong> @eval.Grade<br />
+                                <strong>Explanation:</strong> @eval.AdditionExplanation<br />
+                                <strong>Teacher:</strong> @eval.TeacherName
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No subjects found.</p>
+    }
+</div>
