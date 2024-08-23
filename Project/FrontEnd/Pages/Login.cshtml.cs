@@ -116,7 +116,7 @@ namespace FrontEnd.Pages
 
                 if(Role == "admin")
                 {
-                    return RedirectToPage("/Admin/Index");
+                    return RedirectToPage("/Admin/Subject");
                 }
                 else if (Role == "teacher")
                 {
