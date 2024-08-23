@@ -124,7 +124,7 @@ namespace FrontEnd.Pages
                 }
                 else if (Role == "student")
                 {
-                    return RedirectToPage("/Student/Index/", new {userId =uid});
+                    return RedirectToPage("Students/Index/", new { studentId = uid});
                 }
                 else
                 {
