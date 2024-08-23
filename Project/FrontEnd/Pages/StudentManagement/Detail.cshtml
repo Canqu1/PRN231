@@ -1,0 +1,45 @@
+﻿@page
+@model FrontEnd.Pages.Students.DetailModel
+@{
+}
+
+<form method="post">
+    <div class="container">
+        <h1>Detail information for @Model.Student.Name</h1>
+        <div class="text-danger">@Model.Message</div>
+        <input type="hidden" asp-for="UpdateStudent.StudentId" value="@Model.Student.StudentId"/>
+        <div class="row">
+            <div class="form-group col-md-6 mb-2">
+                <label for="name">Student Name</label>
+                <input type="text" asp-for="UpdateStudent.Name" class="form-control" id="name" value="@Model.Student.Name" readonly="@(Model.IsEdit != true)" />
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" value="@Model.Student.Age" readonly="@(Model.IsEdit != true)" asp-for="UpdateStudent.Age" />
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="regular">Regular Student</label>
+                <select id="regular" class="form-select" disabled="@(Model.IsEdit != true)" asp-for="UpdateStudent.IsRegularStudent">
+                    <option value="true" selected="@(Model.Student.IsRegularStudent == true)">True</option>
+                    <option value="false" selected="@(Model.Student.IsRegularStudent != true)">False</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone" value="@Model.Student.PhoneNumber" readonly="@(Model.IsEdit != true)" asp-for="UpdateStudent.PhoneNumber" />
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" value="@Model.Student.Address" readonly="@(Model.IsEdit != true)" asp-for="UpdateStudent.Address" />
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="infor">Addition information</label>
+                <input type="text" class="form-control" id="infor" value="@Model.Student.AdditionalInformation" readonly="@(Model.IsEdit != true)" asp-for="UpdateStudent.AdditionalInformation" />
+            </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center mt-4">
+            <a href="./Index" class="btn btn-secondary mx-2 col-md-2">Back</a>
+            <button type="submit" class="btn btn-primary mx-2 col-md-2">Submit</button>
+        </div>
+    </div>
+</form>
