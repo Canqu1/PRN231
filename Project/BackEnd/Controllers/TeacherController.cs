@@ -44,6 +44,80 @@ namespace PRN231_ProjectTest.Controllers
             return teacher.TeacherId;
         }
 
+        [HttpGet("ById/{userId}")]
+        public IActionResult GetTeacher(int userId)
+        {
+            var teacher = _context.Teachers
+                          .Where(t => t.TeacherId == userId)
+                          .Select(t => new TeacherDTO
+                          {
+                              TeacherId = t.TeacherId,
+                              TeacherName = t.TeacherName,
+                              Email = t.Email,
+                              Department = t.Department,
+                              PhoneNumber = t.PhoneNumber
+                          }).FirstOrDefault();
+            return Ok(teacher);
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] TeacherDTO model)
+        {
+            var t = _context.Teachers.FirstOrDefault(x => x.TeacherId == model.TeacherId);
+            if (t == null)
+            {
+                return BadRequest();
+            }
+            t.TeacherName = model.TeacherName;
+            t.Email = model.Email;
+            t.Department = model.Department;
+            t.PhoneNumber = model.PhoneNumber;
+            t.HireDate = model.HireDate;
+            _context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreateTeacher(CreateTeacherDTO teacherDto)
+        {
+            try
+            {
+                var acc = _context.Accounts.FirstOrDefault(x => x.Email == teacherDto.Email);
+                if (acc != null)
+                {
+                    return BadRequest();
+                }
+                // Create a new account
+                Guid guidActiveCode = Guid.NewGuid();
+                var newAccount = new Account
+                {
+                    Email = teacherDto.Email,
+                    Password = teacherDto.Password,
+                    ActiveCode = guidActiveCode.ToString(),
+                    IsActive = false,
+                    Type = "student"
+                };
+                _context.Accounts.Add(acc);
+                _context.SaveChanges();
+                var teacher = new Teacher
+                {
+                    AccountId = newAccount.AccountId,
+                    TeacherName = teacherDto.TeacherName,
+                    Email = teacherDto.Email,
+                    Department = teacherDto.Department,
+                    PhoneNumber = teacherDto.PhoneNumber
+                };
+
+                _context.Teachers.Add(teacher);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<TeacherDTO>> PostTeacher(TeacherDTO teacherDto)
         {

@@ -18,6 +18,41 @@ namespace BackEnd.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var students = await _context.Students
+                .Include(x => x.StudentDetails)
+                .Select(s => new
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name,
+                    Age = s.Age,
+                    Address = s.StudentDetails.FirstOrDefault().Address, // Lấy chi tiết đầu tiên
+                    PhoneNumber = s.StudentDetails.FirstOrDefault().PhoneNumber,
+                    AdditionalInformation = s.StudentDetails.FirstOrDefault().AdditionalInformation,
+                }).ToListAsync();
+
+            return Ok(students);
+        }
+
+        [HttpGet("Detail/{studentId}")]
+        public ActionResult GetStudent(int studentId)
+        {
+            var students =  _context.Students
+                .Include(x => x.StudentDetails)
+                .Select(s => new
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name,
+                    Age = s.Age,
+                    Address = s.StudentDetails.FirstOrDefault().Address, // Lấy chi tiết đầu tiên
+                    PhoneNumber = s.StudentDetails.FirstOrDefault().PhoneNumber,
+                    AdditionalInformation = s.StudentDetails.FirstOrDefault().AdditionalInformation,
+                }).FirstOrDefault(x => x.StudentId == studentId);
+
+            return Ok(students);
+        }
         [HttpGet("evaluation")]
         public async Task<IActionResult> GetStudentsWithEvaluations(int studentId)
         {
@@ -144,7 +179,7 @@ namespace BackEnd.Controllers
         }
 
         [HttpPut("students/{studentId}/profile")]
-        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromForm] StudentReq updateStudentProfileDTO)
+        public async Task<IActionResult> UpdateStudentProfile(int studentId, [FromBody] StudentReq updateStudentProfileDTO)
         {
             var student = await _context.Students.Include(s => s.StudentDetails).FirstOrDefaultAsync(s => s.StudentId == studentId);
 
@@ -189,5 +224,52 @@ namespace BackEnd.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult AddStudent([FromBody] CreateStudent studentReq)
+        {
+            try
+            {
+                var acc = _context.Accounts.FirstOrDefault(x => x.Email == studentReq.Email);
+                if (acc != null)
+                {
+                    return BadRequest();
+                }
+                // Create a new account
+                Guid guidActiveCode = Guid.NewGuid();
+                var newAccount = new Account
+                {
+                    Email = studentReq.Email,
+                    Password = studentReq.Password,
+                    ActiveCode = guidActiveCode.ToString(),
+                    IsActive = false,
+                    Type = "student"
+                };
+                _context.Accounts.Add(newAccount);
+                _context.SaveChanges();
+                var st = new Student()
+                {
+                    AccountId = newAccount.AccountId,
+                    Name = studentReq.Name,
+                    Age = studentReq.Age,
+                    IsRegularStudent = studentReq.IsRegularStudent,
+                };
+                _context.Students.Add(st);
+                _context.SaveChanges();
+                var detail = new StudentDetail()
+                {
+                    StudentId = st.StudentId,
+                    Address = studentReq.Address,
+                    AdditionalInformation = studentReq.AdditionalInformation,
+                    PhoneNumber = studentReq.PhoneNumber
+                };
+                _context.StudentDetails.Add(detail);
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

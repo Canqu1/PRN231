@@ -1,0 +1,44 @@
+﻿@page
+@model FrontEnd.Pages.Teachers.IndexModel
+@{
+}
+
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-between my-4">
+        <h2>List Teachers</h2>
+        <a href="/TeacherManagement/Create" class="btn btn-primary">Create Teacher</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Teacher Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Phone Number</th>
+                <th>Hire Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.Teachers != null)
+            {
+                @foreach(var t in Model.Teachers)
+                {
+                    <tr>
+                        <td>@t.TeacherId</td>
+                        <td>@t.TeacherName</td>
+                        <td>@t.Email</td>
+                        <td>@t.Department</td>
+                        <td>@t.PhoneNumber</td>
+                        <td>@(t.HireDate == null ? "N/A" : t.HireDate)</td>
+                        <td>
+                            <a href="/TeacherManagement/Detail?userId=@t.TeacherId&isUpdate=true" class="btn btn-warning">Edit</a>
+                            <a href="/TeacherManagement/Detail?userId=@t.TeacherId&isUpdate=false" class="btn btn-primary">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
