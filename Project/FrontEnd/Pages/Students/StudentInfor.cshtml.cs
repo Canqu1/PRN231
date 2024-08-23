@@ -18,6 +18,7 @@ namespace FrontEnd.Pages.Students
 
         public async Task<IActionResult> OnGetAsync(int studentId)
         {
+            TempData.Keep();
             var client = _httpClientFactory.CreateClient();
             var studentResponse = await client.GetAsync($"http://localhost:5138/api/Student/students/{studentId}/profile");
             if (studentResponse.IsSuccessStatusCode)
