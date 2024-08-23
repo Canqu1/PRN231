@@ -8,6 +8,16 @@
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddAuthentication(/* Your authentication setup */)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Login"; // Adjust the login path
+                });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
+            });
             builder.Services.AddHttpClient();
             builder.Services.AddAuthentication("CookieAuthentication")
            .AddCookie("CookieAuthentication", options =>
@@ -41,5 +51,7 @@
 
             app.Run();
         }
+
+
     }
 }

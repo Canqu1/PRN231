@@ -21,6 +21,12 @@ namespace FrontEnd.Pages.Admin
 
         public async Task<IActionResult> OnGetAsync()
         {
+            // Ensure the user is an admin
+            if (HttpContext.Session.GetString("Role") != "admin")
+            {
+                return RedirectToPage("/Admin/UnauthorizedModel"); // Redirect to an unauthorized page if not admin
+            }
+
             var response = await _httpClient.GetAsync("http://localhost:5138/api/Subject");
 
             if (response.IsSuccessStatusCode)
@@ -35,11 +41,14 @@ namespace FrontEnd.Pages.Admin
                 return Page();
             }
 
-            return Page();
+            // Handle any error during API call
+            return RedirectToPage("/Error");
         }
 
         public async Task<IActionResult> OnPostUpdateAsync(int subjectId, string subjectName)
         {
+            // Similar role check can be done here for extra security
+
             var updateDto = new UpdateSubjectDTO
             {
                 SubjectName = subjectName
@@ -55,7 +64,7 @@ namespace FrontEnd.Pages.Admin
                 return RedirectToPage();
             }
 
-            return Page();
+            return Page(); // Handle the failure case
         }
     }
 }
